@@ -1,12 +1,13 @@
 #include <Arduino.h>
 #include <pwm/PwmChannel.h>
 
-PwmChannel::PwmChannel(PulseWidthModulation* pwm, int pin) : pwm(pwm), pin(pin) {
+PwmChannel::PwmChannel(PwmTimer* timer, int pin, float dutyCyle): timer(timer), pin(pin) {
+    setDutyCyle(dutyCyle);
     pinMode(pin, OUTPUT);
 }
 
 void PwmChannel::loop() {
-    if(pwm->isSignalHigh(this->dutyCyle)) {
+    if(timer->isSignalHigh(dutyUnits)) {
         digitalWrite(pin, HIGH);
     } else {
         digitalWrite(pin, LOW);
@@ -14,9 +15,9 @@ void PwmChannel::loop() {
 }
 
 void PwmChannel::setDutyCyle(float dutyCyle) {
-    this->dutyCyle = dutyCyle;
+    this->dutyUnits = dutyCyle * timer->getPeriod();
 }
 
-float PwmChannel::getDutyCyle() {
-    return this->dutyCyle;
+unsigned int PwmChannel::getDutyUnits() {
+    return this->dutyUnits;
 }

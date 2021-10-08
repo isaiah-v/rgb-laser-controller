@@ -1,11 +1,11 @@
 #include <pwm/PwmLooper.h>
 
-PwmLooper::PwmLooper(PulseWidthModulation* pwm, PwmChannel* red, PwmChannel* green, PwmChannel* blue):
-    pwm(pwm), red(red), green(green), blue(blue) {
+PwmLooper::PwmLooper(PwmTimer* timer, PwmChannel* red, PwmChannel* green, PwmChannel* blue):
+    timer(timer), red(red), green(green), blue(blue) {
 }
 
 void PwmLooper::loop() {
-    pwm->loop();
+    timer->loop();
     red->loop();
     green->loop();
     blue->loop();

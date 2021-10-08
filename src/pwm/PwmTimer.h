@@ -2,9 +2,9 @@
 #define LASER_CONTROLLER_PWM_CALC
 
 /**
- * A basic PWM module
+ * The component that manages the pwm timming
  */
-class PulseWidthModulation {
+class PwmTimer {
 public:
 
     /**
@@ -12,15 +12,17 @@ public:
      * 
      * @param period - the cycle period in microseconds
      */
-    PulseWidthModulation(int period);
+    PwmTimer(unsigned int period);
     
+    void setPeriod(unsigned int period);
+
     /**
      * Gets the set period in microseconds
      * 
      * @returns the period in micros
      * econds
      */
-    int getPeriod();
+    unsigned int getPeriod();
     
     /**
      * Called on every interation of the event loop to update the current state
@@ -34,6 +36,8 @@ public:
      * @returns true if the signal should be high
      */
     bool isSignalHigh(float dutyCycle);
+
+    bool isSignalHigh(unsigned int dutyUnits);
     
     /**
      * Returns a number between 0 and 1 representing the percentage in which the current period is spent.
@@ -41,10 +45,10 @@ public:
      * 
      * @returns the current period radio
      */
-    float getCurrentPeriodRadio();
+    unsigned int getCurrentPeriodUnits();
 private:
-    const int period;
-    float currentPeriodRadio;
+    unsigned int period;
+    unsigned int currentPeriodUnits;
 };
 
 #endif

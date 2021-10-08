@@ -1,18 +1,18 @@
 #ifndef LASER_CONTROLLER_PWM_CHANNEL
 #define LASER_CONTROLLER_PWM_CHANNEL
 
-#include <pwm/PulseWidthModulation.h>
+#include <pwm/PwmTimer.h>
 
 class PwmChannel {
 public:
-    PwmChannel(PulseWidthModulation* pwm, int pin);
+    PwmChannel(PwmTimer* timer, int pin, float dutyCyle);
     void loop();
     void setDutyCyle(float dutyCyle);
-    float getDutyCyle();
+    unsigned int getDutyUnits();
 private:
-    PulseWidthModulation* pwm;
+    PwmTimer* timer;
     int pin;
-    float dutyCyle;
+    unsigned int dutyUnits;
 };
 
 #endif
