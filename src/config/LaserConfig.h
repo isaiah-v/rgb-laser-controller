@@ -22,13 +22,13 @@ extern PwmChannel pwmBlue;
 extern PwmLooper pwmLooper;
 
 extern PwmTimerPotentiometerCallback timerPotentiometerCallback;
-//extern PwmChannelPotentiometerCallback redPotentiometerCallback;
-//extern PwmChannelPotentiometerCallback greenPotentiometerCallback;
-//extern PwmChannelPotentiometerCallback bluePotentiometerCallback;
+extern PwmChannelPotentiometerCallback redPotentiometerCallback;
+extern PwmChannelPotentiometerCallback greenPotentiometerCallback;
+extern PwmChannelPotentiometerCallback bluePotentiometerCallback;
 
 extern Potentiometer timmerPotentiometer;
-//extern Potentiometer redPotentiometer;
-//extern Potentiometer greenPotentiometer;
-//extern Potentiometer bluePotentiometer;
+extern Potentiometer redPotentiometer;
+extern Potentiometer greenPotentiometer;
+extern Potentiometer bluePotentiometer;
 
 #endif

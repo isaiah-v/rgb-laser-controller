@@ -8,11 +8,11 @@ public:
     PwmChannel(PwmTimer* timer, int pin, float dutyCyle);
     void loop();
     void setDutyCyle(float dutyCyle);
-    unsigned int getDutyUnits();
+    float getDutyCyle();
 private:
     PwmTimer* timer;
     int pin;
-    unsigned int dutyUnits;
+    float dutyCyle;
 };
 
 #endif
