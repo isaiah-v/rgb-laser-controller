@@ -2,14 +2,15 @@
 #define LASER_CONTROLLER_POTENTIOMETER_PWM_CHANNEL
 
 #include <hardware/PotentiometerCallback.h>
-#include <pwm/PwmChannel.h>
+#include <pwm/Pwm.h>
 
 class PwmChannelPotentiometerCallback: public PotentiometerCallback {
 public:
-    PwmChannelPotentiometerCallback(PwmChannel* pwmChannel);
+    PwmChannelPotentiometerCallback(Pwm* pwm, PwmChannel channel);
 	void onChange(float value);
 private:
-    PwmChannel* pwmChannel;
+    Pwm* pwm;
+    PwmChannel channel;
 }; 
 
 #endif

@@ -1,18 +1,15 @@
 #include <Arduino.h>
 #include <config/LaserConfig.h>
 
-PwmTimer pwmTimer = PwmTimer(PWM_DEFAULT_PERIOD);
-PwmChannel pwmRed = PwmChannel(&pwmTimer, PIN_RED, PWM_DEFAULT_DUTY_CYCLE);
-PwmChannel pwmGreen = PwmChannel(&pwmTimer, PIN_GREEN, PWM_DEFAULT_DUTY_CYCLE);
-PwmChannel pwmBlue = PwmChannel(&pwmTimer, PIN_BLUE, PWM_DEFAULT_DUTY_CYCLE);
-PwmLooper pwmLooper = PwmLooper(&pwmTimer, &pwmRed, &pwmGreen, &pwmBlue);
+Pwm pwm = Pwm(PWM_DEFAULT_PERIOD);
+PwmController pwmController = PwmController(&pwm, PIN_RED, PIN_GREEN, PIN_BLUE);
 
-PwmTimerPotentiometerCallback timerPotentiometerCallback = PwmTimerPotentiometerCallback(1000, 65535, &pwmTimer);
-PwmChannelPotentiometerCallback redPotentiometerCallback = PwmChannelPotentiometerCallback(&pwmRed);
-PwmChannelPotentiometerCallback greenPotentiometerCallback = PwmChannelPotentiometerCallback(&pwmGreen);
-PwmChannelPotentiometerCallback bluePotentiometerCallback = PwmChannelPotentiometerCallback(&pwmBlue);
+PwmTimerPotentiometerCallback timerPotentiometerCallback = PwmTimerPotentiometerCallback(8000, 65535, &pwm);
+PwmChannelPotentiometerCallback redPotentiometerCallback = PwmChannelPotentiometerCallback(&pwm, PwmChannel::RED);
+PwmChannelPotentiometerCallback greenPotentiometerCallback = PwmChannelPotentiometerCallback(&pwm, PwmChannel::GREEN);
+PwmChannelPotentiometerCallback bluePotentiometerCallback = PwmChannelPotentiometerCallback(&pwm, PwmChannel::BLUE);
 
-Potentiometer timmerPotentiometer = Potentiometer(0.15, 0.95, A5, &timerPotentiometerCallback);
-Potentiometer redPotentiometer = Potentiometer(0.15, 0.95, A4, &redPotentiometerCallback);
-Potentiometer greenPotentiometer = Potentiometer(0.15, 0.95, A3, &greenPotentiometerCallback);
-Potentiometer bluePotentiometer = Potentiometer(0.15, 0.95, A2, &bluePotentiometerCallback);
+Potentiometer timmerPotentiometer = Potentiometer(200, 950, A5, &timerPotentiometerCallback);
+Potentiometer redPotentiometer = Potentiometer(200, 950, A4, &redPotentiometerCallback);
+Potentiometer greenPotentiometer = Potentiometer(200, 950, A3, &greenPotentiometerCallback);
+Potentiometer bluePotentiometer = Potentiometer(200, 950, A2, &bluePotentiometerCallback);

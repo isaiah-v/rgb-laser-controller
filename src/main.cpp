@@ -2,6 +2,7 @@
 #include <config/LaserConfig.h>
 
 void setup() {
+	Serial.begin(9600);
 }
 
 void loop() {
@@ -9,5 +10,5 @@ void loop() {
 	redPotentiometer.loop();
 	greenPotentiometer.loop();
 	bluePotentiometer.loop();
-	pwmLooper.loop();
+	pwmController.loop();
 }

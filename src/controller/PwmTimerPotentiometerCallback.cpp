@@ -1,10 +1,9 @@
 #include <controller/PwmTimerPotentiometerCallback.h>
 
-PwmTimerPotentiometerCallback::PwmTimerPotentiometerCallback(unsigned int minPeriod, unsigned int maxPeriod, PwmTimer* pwmTimer):
-    minPeriod(minPeriod), maxPeriod(maxPeriod), pwmTimer(pwmTimer) {
+PwmTimerPotentiometerCallback::PwmTimerPotentiometerCallback(unsigned int minPeriod, unsigned int maxPeriod, Pwm* pwm):
+    minPeriod(minPeriod), maxPeriod(maxPeriod), pwm(pwm) {
 }
 
 void PwmTimerPotentiometerCallback::onChange(float value) {
-    unsigned int pvalue = (maxPeriod-minPeriod)*value + minPeriod;
-    pwmTimer->setPeriod(pvalue);
+    pwm->setPeriod((maxPeriod-minPeriod)*value + minPeriod);
 }

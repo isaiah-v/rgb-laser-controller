@@ -1,8 +1,8 @@
 #include <controller/PwmChannelPotentiometerCallback.h>
 
-PwmChannelPotentiometerCallback::PwmChannelPotentiometerCallback(PwmChannel* pwmChannel): pwmChannel(pwmChannel) {
+PwmChannelPotentiometerCallback::PwmChannelPotentiometerCallback(Pwm* pwm, PwmChannel channel): pwm(pwm), channel(channel) {
 }
 
 void PwmChannelPotentiometerCallback::onChange(float value) {
-    pwmChannel->setDutyCyle(value);
+    pwm->setDutyCycle(channel, value);
 }

@@ -1,9 +1,8 @@
 #ifndef LASER_CONTROLLER_CONFIG
 #define LASER_CONTROLLER_CONFIG
 
-#include <pwm/PwmTimer.h>
-#include <pwm/PwmChannel.h>
-#include <pwm/PwmLooper.h>
+#include <pwm/Pwm.h>
+#include <pwm/PwmController.h>
 #include <controller/PwmChannelPotentiometerCallback.h>
 #include <controller/PwmTimerPotentiometerCallback.h>
 #include <hardware/Potentiometer.h>
@@ -15,11 +14,8 @@ const int PIN_RED = 12;
 const int PIN_GREEN = 11;
 const int PIN_BLUE = 10;
 
-extern PwmTimer pwmTimer;
-extern PwmChannel pwmRed;
-extern PwmChannel pwmGreen;
-extern PwmChannel pwmBlue;
-extern PwmLooper pwmLooper;
+extern Pwm pwm;
+extern PwmController pwmController;
 
 extern PwmTimerPotentiometerCallback timerPotentiometerCallback;
 extern PwmChannelPotentiometerCallback redPotentiometerCallback;
