@@ -2,14 +2,37 @@
 #include <config/LaserConfig.h>
 
 Pwm pwm = Pwm(PWM_DEFAULT_PERIOD);
-PwmController pwmController = PwmController(&pwm, PIN_RED, PIN_GREEN, PIN_BLUE);
+PwmController pwmController = PwmController(
+    &pwm,
+    PWM_PIN_RED,
+    PWM_PIN_GREEN,
+    PWM_PIN_BLUE);
 
-PwmTimerPotentiometerCallback timerPotentiometerCallback = PwmTimerPotentiometerCallback(8000, 65535, &pwm);
+PwmTimerPotentiometerCallback timerPotentiometerCallback = PwmTimerPotentiometerCallback(PWM_PERIOD_MIN, PWM_PERIOD_MAX, &pwm);
 PwmChannelPotentiometerCallback redPotentiometerCallback = PwmChannelPotentiometerCallback(&pwm, PwmChannel::RED);
 PwmChannelPotentiometerCallback greenPotentiometerCallback = PwmChannelPotentiometerCallback(&pwm, PwmChannel::GREEN);
 PwmChannelPotentiometerCallback bluePotentiometerCallback = PwmChannelPotentiometerCallback(&pwm, PwmChannel::BLUE);
 
-Potentiometer timmerPotentiometer = Potentiometer(200, 950, A5, &timerPotentiometerCallback);
-Potentiometer redPotentiometer = Potentiometer(200, 950, A4, &redPotentiometerCallback);
-Potentiometer greenPotentiometer = Potentiometer(200, 950, A3, &greenPotentiometerCallback);
-Potentiometer bluePotentiometer = Potentiometer(200, 950, A2, &bluePotentiometerCallback);
+Potentiometer timmerPotentiometer = Potentiometer(
+    POTENTIOMETER_SIGNAL_OFF,
+    POTENTIOMETER_SIGNAL_ON,
+    POTENTIOMETER_PIN_PERIOD,
+    &timerPotentiometerCallback);
+
+Potentiometer redPotentiometer = Potentiometer(
+    POTENTIOMETER_SIGNAL_OFF,
+    POTENTIOMETER_SIGNAL_ON,
+    POTENTIOMETER_PIN_RED,
+    &redPotentiometerCallback);
+
+Potentiometer greenPotentiometer = Potentiometer(
+    POTENTIOMETER_SIGNAL_OFF,
+    POTENTIOMETER_SIGNAL_ON,
+    POTENTIOMETER_PIN_GREEN,
+    &greenPotentiometerCallback);
+
+Potentiometer bluePotentiometer = Potentiometer(
+    POTENTIOMETER_SIGNAL_OFF,
+    POTENTIOMETER_SIGNAL_ON,
+    POTENTIOMETER_PIN_BLUE,
+    &bluePotentiometerCallback);

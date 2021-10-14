@@ -6,7 +6,7 @@
 
 class PwmTimerPotentiometerCallback: public PotentiometerCallback {
 public:
-    PwmTimerPotentiometerCallback(unsigned int offValue, unsigned int maxPeriod, Pwm* pwm);
+    PwmTimerPotentiometerCallback(unsigned int minPeriod, unsigned int maxPeriod, Pwm* pwm);
 	void onChange(float value);
 private:
     unsigned int minPeriod;

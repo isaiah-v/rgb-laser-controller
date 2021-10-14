@@ -5,13 +5,13 @@
 
 class Potentiometer {
 public:
-    Potentiometer(int offSignal, int onSignal, int apin, PotentiometerCallback* callback);
+    Potentiometer(int offSignal, int onSignal, uint8_t apin, PotentiometerCallback* callback);
     void loop();
 private:
     int last;
     int offSignal;
     int onSignal;
-    int apin;
+    uint8_t apin;
     PotentiometerCallback* callback;
 };
 

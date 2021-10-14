@@ -5,13 +5,13 @@
 
 class PwmController {
 public:
-    PwmController(Pwm* pwm, const int redPin, const int greenPin, const int bluePin);
+    PwmController(Pwm* pwm, const uint8_t redPin, const uint8_t greenPin, const uint8_t bluePin);
     void loop();
 private:
     Pwm* pwm;
-    const int redPin;
-    const int greenPin;
-    const int bluePin;
+    const uint8_t redPin;
+    const uint8_t greenPin;
+    const uint8_t bluePin;
 };
 
 #endif

@@ -3,7 +3,7 @@
 
 const int POTENTIOMETER_TOLERANCE = 30;
 
-Potentiometer::Potentiometer(int offSignal, int onSignal, int apin, PotentiometerCallback* callback)
+Potentiometer::Potentiometer(int offSignal, int onSignal, uint8_t apin, PotentiometerCallback* callback)
     : offSignal(offSignal), onSignal(onSignal), apin(apin), callback(callback) {
 }
 
